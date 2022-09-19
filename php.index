@@ -1,0 +1,19 @@
+class Solution {
+
+    /**
+     * @param String $s
+     * @return Integer
+     */
+    function lengthOfLongestSubstring($s) {
+           $a = 0;
+    $b = [];
+    for ($i = $j = 0, $l = strlen($s); $j < $l; $j++) {
+        if (isset($b[$s[$j]])) {
+            $i = max($i, $b[$s[$j]] + 1);
+        }
+        $a = max($a, $j - $i + 1);
+        $b[$s[$j]] = $j;
+    }
+    return $a; 
+    }
+}
